@@ -1,0 +1,16 @@
+@include tablet {
+    .iconos-nosotros {
+        @include grid(3, 2rem)
+    }    
+}
+
+.icono {
+    text-align: center;  // centramos el contenido
+
+    img {
+        height: 10rem;  //Disminuimos la altura de las img a 10 rem
+    }
+    h3 {
+        text-transform: uppercase; // Transformamos los h3 a mayusculas
+    }
+}
