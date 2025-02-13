@@ -1,34 +1,25 @@
 <?php
 
-$db = mysqli_connect(
-    $_ENV['DB_HOST'],
-    $_ENV['DB_USER'],
-    $_ENV['DB_PASS'],
-    $_ENV['DB_NAME'],
-);
+function conectarDB(): mysqli
+{
+    $db = new mysqli(
+        $_ENV['DB_HOST'] ?? getenv('DB_HOST'),
+        $_ENV['DB_USER'] ?? getenv('DB_USER'),
+        $_ENV['DB_PASS'] ?? getenv('DB_PASS'),
+        $_ENV['DB_NAME'] ?? getenv('DB_NAME')
+    );
 
-$db->set_charset("utf8");
+    if ($db->connect_error) {
+        die('Error de conexión: ' . $db->connect_error);
+    }
 
-if (!$db) {
-    echo "Error: No se pudo conectar a MySQL.";
-    echo "error de depuración: " . mysqli_connect_errno();
-    echo "error de depuración: " . mysqli_connect_error();
-    exit;
+    return $db;
 }
 
-// function conectarDB(): mysqli
-// {
-//     $db = new mysqli(
-//         $_ENV['DB_HOST'],
-//         $_ENV['DB_USER'],
-//         $_ENV['DB_PASS'],
-//         $_ENV['DB_NAME']
-//     );
-
-//     if (!$db) {
-//         echo "Error, no se pudo conectar a la DB";
-//         exit;
-//     }
-
-//     return $db;
-// }
+// $db = mysqli_connect(
+//     $_ENV['DB_HOST'],
+//     $_ENV['DB_USER'],
+//     $_ENV['DB_PASS'],
+//     $_ENV['DB_NAME']
+// );
+// $db->set_charset("utf8");
