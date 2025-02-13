@@ -3,14 +3,15 @@
 function conectarDB(): mysqli
 {
     $db = new mysqli(
-        $_ENV['DB_HOST'] ?? getenv('DB_HOST'),
-        $_ENV['DB_USER'] ?? getenv('DB_USER'),
-        $_ENV['DB_PASS'] ?? getenv('DB_PASS'),
-        $_ENV['DB_NAME'] ?? getenv('DB_NAME')
+        $_ENV['DB_HOST'],
+        $_ENV['DB_USER'],
+        $_ENV['DB_PASS'],
+        $_ENV['DB_NAME']
     );
 
-    if ($db->connect_error) {
-        die('Error de conexión: ' . $db->connect_error);
+    if (!$db) {
+        echo "Error, no se pudo conectar a la DB";
+        exit;
     }
 
     return $db;
