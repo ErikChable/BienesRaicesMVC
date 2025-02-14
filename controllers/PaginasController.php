@@ -87,7 +87,7 @@ class PaginasController
             $mail->SMTPAuth = true;
             $mail->Port = $_ENV['EMAIL_PORT'];
             $mail->Username = $_ENV['EMAIL_USER'];
-            $mail->Password = $_ENV['EMAIL_PASS'];
+            $mail->Password = $_ENV['EMAIL_PASSWORD'];
 
             // Configurar contenido del Email
             $mail->setFrom($_ENV['EMAIL_USER']);
